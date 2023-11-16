@@ -12,3 +12,15 @@ function showVolunteerListPage() {
 // Function to show volunteer details page 2
 
 // Function to show volunteer details page 3
+
+
+//show div function
+function showDiv(divId){
+  main_page_div_children = document.getElementById("main_page").children; 
+  //debugger
+  for(var child_div of main_page_div_children){
+      child_div.style.display =  (child_div.getAttribute('id') == divId  ? 'block': 'none');
+  }
+}
+
+showDiv('volunteer_search_home')
