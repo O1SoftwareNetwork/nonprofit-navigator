@@ -10,20 +10,25 @@
 </head>
     <body>
       <nav>
-        <button onclick = "showDiv('volunteer_search_home')">HomePage</button>
-        <button onclick = "showDiv('volunteer_search_page')">SearchPage</button> 
+        <button onclick="showDiv('volunteer_search_home')">HomePage</button>
+        <button onclick="showDiv('volunteer_search_page')">SearchPage</button> 
       </nav>
-      
-        <main id = "main_page">
+    
+        <main id="main_page">
           
-          <div id="volunteer_search_home">
+          <div id="volunteer_search_home" onclick="showDiv('volunteer_search_page')">
             <h2>Volunteer</h2>
           </div>
 
           <div id="volunteer_search_page">
-            <h2>Volunteer Search</h2>
-            <input type = "text"/>
-            <button>search</button>
+            <h2>Volunteer</h2>
+            <div id = "search">
+              <div id = "search_input">
+                <input class="text_input" type = "text"/>
+                <input class="text_input" type = "text"/>
+              </div>
+              <button style = "float: right">search</button>
+            </div>
           </div>
 
           <div id="volunteer_search_details_page_1"></div>
