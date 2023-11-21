@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Document</title>
+</head>
+    <body>
+      <nav>
+        <button onclick="showDiv('volunteer_search_home')">HomePage</button>
+        <button onclick="showDiv('volunteer_search_page')">SearchPage</button> 
+      </nav>
+    
+        <main id="main_page">
+          
+          <div id="volunteer_search_home" onclick="showDiv('volunteer_search_page')">
+            <h2>Volunteer</h2>
+          </div>
+
+          <div id="volunteer_search_page">
+            <h2>Volunteer</h2>
+            <div id = "search">
+              <div id = "search_input">
+                <input class="text_input" type = "text"/>
+                <input class="text_input" type = "text"/>
+              </div>
+              <button style = "float: right">search</button>
+            </div>
+          </div>
+
+          <div id="volunteer_search_details_page_1"></div>
+
+          <div id="volunteer_search_details_page_2"></div>
+
+          <div id="volunteer_search_details_page_3"></div>
+        </main>
+    
+    <footer>
+      <h1>Footer</h1>
+    </footer>
+      
+    <script src="main.js"></script>
+  </body>
+</html>

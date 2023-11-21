@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  background-color: lightgray;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  font-family: arial;
+}
+
+#volunteer_search_home {
+  margin: 20px auto;
+  width: 250px;
+  height: 250px;
+  background-color: gray;
+
+}
+
+#volunter_search_page{
+  display: flex;
+}
+
+/* #search{
+ flex-direction: column;
+} */
+
+#search_input{
+  flex-direction: row;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+h2 input {
+  display: flex;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/*
+
+*/
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  background-color: lightblue;
+}
+
+.text_input {
+  width: 150px;
+}
