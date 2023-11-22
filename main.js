@@ -13,6 +13,45 @@ function showVolunteerListPage() {
 
 // Function to show volunteer details page 3
 
+//Search results show functionality
+volunteer_list = [
+  {
+    "name":"USDA-ARS",
+    "location":"Florida",
+    "description":"This is non-profit org which works with Agricultural analysis"
+  },
+  {
+    "name":"NSF",
+    "location":"California",
+    "description":"This is non-profit org which works with Life Sciences"
+  },
+  {
+    "name":"NSF-NCDC",
+    "location":"Atlanta",
+    "description":"This is non-profit org which works with Climate"
+  }
+]
+
+//function to render the search results
+function showSearchResults(){
+  let searchResultsDiv = document.getElementById('search-results')
+  let inputKeyword = document.getElementById('keyword').value;
+  let html = "";
+  let i = 1;
+  for (let volunteer of volunteer_list) {
+    if(volunteer.name.startsWith(inputKeyword)){
+      html +=
+        `<div>
+            <h4>${volunteer.name}</h4>
+            <h5>${volunteer.location}</h5>
+            <p>${volunteer.description}</p>
+        </div>`;
+      html += `<br>`
+    }
+  }
+  searchResultsDiv.innerHTML = html;
+}
+
 
 //show div function
 function showDiv(divId){
