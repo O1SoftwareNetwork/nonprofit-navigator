@@ -21,7 +21,7 @@ body {
   width: 250px;
   height: 250px;
   background-color: gray;
-
+  cursor: pointer;
 }
 
 #volunter_search_page{
@@ -36,9 +36,37 @@ body {
   flex-direction: row;
 }
 
+.volunteerCard {
+  border: 1px solid black;
+  height: 400px;
+  width: 80%; 
+  margin: 0 auto;
+}
+
+.volunteerCard__image
+ {
+  border: 1px solid black;
+  height: 150px;
+  width: 100%; 
+}
+
+.volunteerCard__content {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.volunteerCard__description {
+  background-color: gray;
+  padding: 10px;
+  font-size:0.8rem;
+}
+
 h2 {
   text-align: center;
   font-size: 2.5rem;
+  cursor: pointer;
 }
 
 h2 input {
