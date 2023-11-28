@@ -37,14 +37,16 @@ function showSearchResults(){
   let searchResultsDiv = document.getElementById('search-results')
   let inputKeyword = document.getElementById('keyword').value;
   let html = "";
-  let i = 1;
   for (let volunteer of volunteer_list) {
     if(volunteer.name.startsWith(inputKeyword)){
       html +=
-        `<div>
-            <h4>${volunteer.name}</h4>
-            <h5>${volunteer.location}</h5>
-            <p>${volunteer.description}</p>
+        `<div class="volunteerCard">
+            <div class="volunteerCard__image"></div>
+            <div class="volunteerCard__content">
+              <h4 class="volunteerCard__name">${volunteer.name}</h4>
+              <h5 class="volunteerCard__location">${volunteer.location}</h5>
+              <p class="volunteerCard__description">${volunteer.description}</p>
+            </div>
         </div>`;
       html += `<br>`
     }
@@ -52,6 +54,8 @@ function showSearchResults(){
   searchResultsDiv.innerHTML = html;
 }
 
+const searchButton = document.getElementById("search-button");
+searchButton.addEventListener("click", showSearchResults);
 
 //show div function
 function showDiv(divId){
