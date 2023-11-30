@@ -37,15 +37,19 @@ body {
 }
 
 .volunteerCard {
-  border: 1px solid black;
+  border-radius: .5rem;
   height: 400px;
   width: 80%; 
   margin: 0 auto;
+  box-shadow: 2px 2px 5px grey; 
 }
 
 .volunteerCard__image
  {
-  border: 1px solid black;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  overflow: hidden;
+  background-color: white;
   height: 150px;
   width: 100%; 
 }
@@ -58,7 +62,8 @@ body {
 }
 
 .volunteerCard__description {
-  background-color: gray;
+  background-color: white;
+  border-radius: .5rem;
   padding: 10px;
   font-size:0.8rem;
 }
