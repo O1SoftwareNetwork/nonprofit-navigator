@@ -1,12 +1,5 @@
 // Function to show home page
 
-// Function to show volunteer list page
-function showVolunteerListPage() {
-  const voluteerSearchPage = document.getElementById("volunteer_search_page");
-  voluteerSearchPage.style.display = "block";
-  const voluteerSearchHome = document.getElementById("volunteer_search_home");
-  voluteerSearchHome.style.display = "none";
-}
 // Function to show volunteer details page 1
 
 // Function to show volunteer details page 2
@@ -78,12 +71,50 @@ function buildVolunteerCard(volunteer) {
   return volunteer_card;
 }
 
+let markup = `
+  <h1>Header of Volunteer Opportunity</h1>
+  <h2>Organization Name: Aging and Disability</h2>
+  <p>This is a paragraph entered by the NPO abouta brief overview of the volunteer opportunity. This should be just enough information for the volunteeer to understand the jist of the opportunity</p>
+  <h3>Cause Areas</h3>
+  <p>Advocacy and Human Rights, Community, Immigrants and Refugees<p>
+  <h3>When</h3>
+  <p>We'll work with your schedule</p>
+  <P>Where<p/>
+  <div>
+    <div>
+      <h3></h3>
+      <p></p>
+    </div>
+    <div>image</div>
+  </div>
+  <h3>Skills</h3>
+  <ul>
+    <li>Mentoring</li>
+    <li>Life Coaching</li>
+    <li>Veteran Care</li>
+    <li>Arabic</li>
+    <li>People Skills</li>
+    <li>Social Work</li>
+  </ul>
+  <h3>Good For</h3>
+  <p><p>
+  <h3>Requirements</h3>
+  <ul>
+    <li>Driver's License</li>
+    <li>Background Check</li>
+    <li>Must be at least 18</li>
+    <li>Orientation or Training</li>
+    <li>Very flexible, any support is appreciated</li>
+    <li>A successful volunteer must be bilingual.</li>
+  </ul>
+`;
+
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", showSearchResults);
 
 //show div function
 function showDiv(divId) {
-  main_page_div_children = document.getElementById("main_page").children;
+  let main_page_div_children = document.getElementById("main_page").children;
   //debugger
   for (var child_div of main_page_div_children) {
     child_div.style.display =
@@ -91,4 +122,16 @@ function showDiv(divId) {
   }
 }
 
-showDiv("volunteer_search_home");
+const renderHome = () => {
+  let main = document.getElementById("main_page");
+  let markup = `
+    <div id="volunteer_search_home">
+      <h2>Volunteer</h2>
+    </div>
+  `;
+  // Insert our home page into our main container
+  main.innerHTML = markup;
+}
+
+// showDiv("volunteer_search_home");
+window.addEventListener("load", renderHome);
