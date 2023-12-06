@@ -1,5 +1,6 @@
 
 //Search results show functionality
+// TODO: Create a schema for volunteer opportunities
 volunteer_list = [
   {
     id: 0,
@@ -12,6 +13,7 @@ volunteer_list = [
     },
     description:
       "This is non-profit org which works with Agricultural analysis",
+    requirements: ["Requirement 1", "Requirement 2"]
   },
   {
     name: "NSF",
@@ -111,27 +113,26 @@ let markup = `
 const renderHome = () => {
   let main = document.getElementById("root");
   let markup = `
-    <div id="volunteer_search_home">
-      <h2>Volunteer</h2>
+    <div class="page__home" id="page__home">
+      <h2 class="card__title">Volunteer</h2>
     </div>
   `;
   // Insert our home page into our main container
   main.innerHTML = markup;
   
-  const volunteerButton = document.getElementById("volunteer_search_home");
+  const volunteerButton = document.getElementById("page__home");
   volunteerButton.addEventListener("click", renderVolunteerList);
 }
 
 const renderVolunteerList = () => {
   let main = document.getElementById("root");
   let markup = `
-    <div id="volunteer_search_page">
-      <h2>Volunteer</h2>
+    <div class="page__volunteer-list" id="page__volunteer-list">
+      <h2 class="header">Volunteer</h2>
       <div id="search">
-        <div id="search_input">
+        <div class="search_input" id="search_input">
         <input id="keyword" class="text_input" type="text"/>
         <input id="location" class="text_input" type="text"/>
-      </div>
         <button id="search-button" style = "float: right">search</button>
       </div>
       <br>

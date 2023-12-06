@@ -1,3 +1,7 @@
+/***************************************
+CORE STYLING (*, HTML, BODY)
+***************************************/
+
 * {
   padding: 0;
   margin: 0;
@@ -38,6 +42,10 @@ body {
   font-family: arial;
 }
 
+/***************************************
+NAVIGATION STYLING
+***************************************/
+
 nav {
   background-color: var(--nav-color);
   height: 50px;
@@ -55,13 +63,21 @@ nav {
   background-color: var(--nav-color-hover);
 }
 
+/***************************************
+MAIN SECTION STYLING
+***************************************/
+
 main { 
   width: 100%; 
   background-color: var(--main-color);
   flex-grow: 1;
 }
 
-#volunteer_search_home {
+/***************************************
+HOME PAGE STYLING
+***************************************/
+
+#page__home {
   margin: 20px auto;
   width: 250px;
   height: 250px;
@@ -69,12 +85,33 @@ main {
   cursor: pointer;
 }
 
-#volunter_search_page{
-  display: flex;
+.card__title {
+  text-align: center;
+  font-size: var(--font-size-l);
+  cursor: pointer;
 }
 
-#search_input{
+/***************************************
+VOLUNTEER LIST PAGE STYLING
+***************************************/
+
+.page__volunteer-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search_input{
   flex-direction: row;
+}
+
+.text_input {
+  width: 150px;
 }
 
 .volunteerCard {
@@ -109,27 +146,15 @@ main {
   font-size: var(--font-size-s);
 }
 
-h2 {
-  text-align: center;
-  font-size: var(--font-size-l);
-  cursor: pointer;
-}
+/***************************************
+VOLUNTEER DETAIL PAGE STYLING
+***************************************/
 
-h2 input {
-  display: flex;
-}
 
-.text_input {
-  width: 150px;
-}
 
-.logo {
-  max-width:100%;
-  max-height: 100%;
-  display:block;
-  height:auto;
-  
-}
+/***************************************
+FOOTER STYLING
+***************************************/
 
 footer {
   display: flex;
