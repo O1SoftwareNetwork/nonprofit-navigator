@@ -1,16 +1,15 @@
-// Function to show home page
-
-// Function to show volunteer details page 1
-
-// Function to show volunteer details page 2
-
-// Function to show volunteer details page 3
 
 //Search results show functionality
 volunteer_list = [
   {
+    id: 0,
     name: "USDA-ARS",
-    location: "Florida",
+    location: {
+      address: "Address",
+      city: "city",
+      state: "state",
+      zip: "06060"
+    },
     description:
       "This is non-profit org which works with Agricultural analysis",
   },
@@ -109,21 +108,8 @@ let markup = `
   </ul>
 `;
 
-const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", showSearchResults);
-
-//show div function
-function showDiv(divId) {
-  let main_page_div_children = document.getElementById("main_page").children;
-  //debugger
-  for (var child_div of main_page_div_children) {
-    child_div.style.display =
-      child_div.getAttribute("id") == divId ? "block" : "none";
-  }
-}
-
 const renderHome = () => {
-  let main = document.getElementById("main_page");
+  let main = document.getElementById("root");
   let markup = `
     <div id="volunteer_search_home">
       <h2>Volunteer</h2>
@@ -131,7 +117,92 @@ const renderHome = () => {
   `;
   // Insert our home page into our main container
   main.innerHTML = markup;
+  
+  const volunteerButton = document.getElementById("volunteer_search_home");
+  volunteerButton.addEventListener("click", renderVolunteerList);
+}
+
+const renderVolunteerList = () => {
+  let main = document.getElementById("root");
+  let markup = `
+    <div id="volunteer_search_page">
+      <h2>Volunteer</h2>
+      <div id="search">
+        <div id="search_input">
+        <input id="keyword" class="text_input" type="text"/>
+        <input id="location" class="text_input" type="text"/>
+      </div>
+        <button id="search-button" style = "float: right">search</button>
+      </div>
+      <br>
+      <div id="search-results">
+        ${volunteer_list.map((volunteer) => renderCard(volunteer)).join('')}
+      </div>
+    </div>
+  `;
+  
+  main.innerHTML = markup;
+  
+  const searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", showSearchResults);
+}
+
+const renderCard = (vol) => {
+  return `
+    <div class="volunteerCard">
+      <div class="volunteerCard__image"></div>
+      <div class="volunteerCard__content">
+        <h4 class="volunteerCard__name">${vol.name}</h4>
+        <h5 class="volunteerCard__location">${vol.location}</h5>
+        <div class="volunteerCard__description">${vol.description}</div>
+      </div> 
+    </div>
+`;
+}
+
+const renderVolunteerDetails = (id) => {
+  let main = document.getElementById("root");
+  let markup = `
+    <div id="volunteer_search_details_page_1"></div>
+  `;
+  main.innerHTML = markup;
 }
 
 // showDiv("volunteer_search_home");
 window.addEventListener("load", renderHome);
+
+// Volunteer nav button functionality
+document.getElementById('nav__volunteer').addEventListener("click", renderVolunteerList);
+
+// Home nav button functionality
+const homeButton = document.getElementById("nav__home");
+homeButton.addEventListener("click", renderHome);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //show div function
+// function showDiv(divId) {
+//   let main_page_div_children = document.getElementById("main_page").children;
+//   //debugger
+//   for (var child_div of main_page_div_children) {
+//     child_div.style.display =
+//       child_div.getAttribute("id") == divId ? "block" : "none";
+//   }
+// }
