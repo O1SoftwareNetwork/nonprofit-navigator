@@ -5,40 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    
-    <title>Document</title>
+    <title>Nonprofit Navigator</title>
 </head>
     <body>
-      <nav>
-        <button onclick="showDiv('volunteer_search_home')">HomePage</button>
-        <button onclick="showDiv('volunteer_search_page')">SearchPage</button> 
+
+      <nav class="nav">
+        <div class="nav__list-item" id="nav__home">Home</div>
+        <div class="nav__list-item" id="nav__volunteer">Volunteer</div> 
       </nav>
+
+      <main id="root"></main>
     
-        <main id="main_page">
-          
-          <div id="volunteer_search_page">
-            <h2>Volunteer</h2>
-            <div id="search">
-              <div id="search_input">
-                <input id="keyword" class="text_input" type="text"/>
-                <input id="location" class="text_input" type="text"/>
-              </div>
-              <button id="search-button" style = "float: right">search</button>
-            </div>
-            <br>
-            <div id="search-results"></div>
-          </div>
-
-          <div id="volunteer_search_details_page_1"></div>
-
-          <div id="volunteer_search_details_page_2"></div>
-
-          <div id="volunteer_search_details_page_3"></div>
-        </main>
-    
-    <footer>
-      <h1>Footer</h1>
-    </footer>
+      <footer>FOOTER</footer>
       
     <script src="main.js"></script>
   </body>
