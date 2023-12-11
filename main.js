@@ -147,19 +147,9 @@ let volunteer_list = [
   }
 ];
 
-//function to render the search results
-function showSearchResults() {
-  let searchResultsDiv = document.getElementById("search-results");
-  let inputKeyword = document.getElementById("keyword").value;
-
-  for (let volunteer of volunteer_list) {
-    if (volunteer.name.startsWith(inputKeyword)) {
-      let card = buildVolunteerCard(volunteer);
-      searchResultsDiv.appendChild(card);
-      searchResultsDiv.appendChild(document.createElement("br"));
-    }
-  }
-}
+/******************************************************
+ * * * * * * * * * * * * * HOME * * * * * * * * * * * *
+ ******************************************************/
 
 const renderHome = () => {
   let main = document.getElementById("root");
@@ -175,6 +165,10 @@ const renderHome = () => {
   volunteerButton.addEventListener("click", renderVolunteerList);
 }
 
+/******************************************************
+ * * * * * * * * * VOLUNTEER LIST PAGE * * * * * * * * 
+ ******************************************************/
+
 const renderVolunteerList = () => {
   let main = document.getElementById("root");
   let markup = `
@@ -184,11 +178,13 @@ const renderVolunteerList = () => {
         <div class="search_input" id="search_input">
         <input id="keyword" class="text_input" type="text"/>
         <input id="location" class="text_input" type="text"/>
-        <button id="search-button" style = "float: right">search</button>
+        <button id="search-button">search</button>
       </div>
       <br>
       <div id="search-results">
-        ${volunteer_list.map((volunteer) => renderCard(volunteer)).join('')}
+        ${volunteer_list.map((volunteer) => {
+          return renderCard(volunteer)
+        }).join('')}
       </div>
     </div>
   `;
@@ -197,7 +193,10 @@ const renderVolunteerList = () => {
   
   const searchButton = document.getElementById("search-button");
   searchButton.addEventListener("click", showSearchResults);
-  // TODO: Add event listener to search-results
+
+  // Grabbing a reference of the DIV containing all the cards
+  const searchResults = document.getElementById("search-results");
+  searchResults.addEventListener("click", renderVolunteerDetails);
 }
 
 const renderCard = (vol) => {
@@ -205,6 +204,7 @@ const renderCard = (vol) => {
     <div data-id="${vol.id}" class="volunteerCard">
       <div class="volunteerCard__image"></div>
       <div class="volunteerCard__content">
+        <h2>${vol.id}</h2>
         <h4 class="volunteerCard__name">${vol.name}</h4>
         <h5 class="volunteerCard__location">${vol.location}</h5>
         <div class="volunteerCard__description">${vol.description}</div>
@@ -213,18 +213,38 @@ const renderCard = (vol) => {
   `;
 }
 
-// TODO: Create function to handle click
-// TODO: Pull correct element from the event.target
-// TODO: Pull id off of the correct element
-// TODO: Render Volunteer Details Page
+//function to render the search results
+function showSearchResults() {
+  let searchResultsDiv = document.getElementById("search-results");
+  let inputKeyword = document.getElementById("keyword").value;
 
+  for (let volunteer of volunteer_list) {
+    if (volunteer.name.startsWith(inputKeyword)) {
+      let card = buildVolunteerCard(volunteer);
+      searchResultsDiv.appendChild(card);
+      searchResultsDiv.appendChild(document.createElement("br"));
+    }
+  }
+}
+
+/******************************************************
+ * * * * * * * * VOLUNTEER DETAILS PAGE * * * * * * * * 
+ ******************************************************/
+
+
+// TODO: Render Volunteer Details Page
 // TODO: Complete this function
-const renderVolunteerDetails = (id) => {
+const renderVolunteerDetails = (e) => {
+  const volCard = e.target.closest('.volunteerCard');
+  const id = +volCard.dataset.id;
+
+  const vol = volunteer_list.find((v) => v.id === id);
+  
   let main = document.getElementById("root");
   let markup = `
     <div id="volunteer_search_details_page_1">
       <h1>Header of Volunteer Opportunity</h1>
-      <h2>Organization Name: Aging and Disability</h2>
+      <h2>Organization Name: ${vol.name}</h2>
       <p>This is a paragraph entered by the NPO abouta brief overview of the volunteer opportunity. This should be just enough information for the volunteeer to understand the jist of the opportunity</p>
       <h3>Cause Areas</h3>
       <p>Advocacy and Human Rights, Community, Immigrants and Refugees<p>
@@ -233,7 +253,7 @@ const renderVolunteerDetails = (id) => {
       <P>Where<p/>
       <div>
         <div>
-          <h3>${vol.name}</h3>
+          <h3></h3>
           <p></p>
         </div>
         <div>image</div>
@@ -263,6 +283,10 @@ const renderVolunteerDetails = (id) => {
 
   main.innerHTML = markup;
 }
+
+/******************************************************
+ * * * * * * * * * * * * CORE * * * * * * * * * * * * * 
+ ******************************************************/
 
 // showDiv("volunteer_search_home");
 window.addEventListener("load", renderHome);
