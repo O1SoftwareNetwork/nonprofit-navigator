@@ -146,6 +146,14 @@ VOLUNTEER LIST PAGE STYLING
   font-size: var(--font-size-s);
 }
 
+.volunteerCard__skills {
+
+}
+
+.volunteerCard__skills__label {
+  font-weight: bold;
+}
+
 /***************************************
 VOLUNTEER DETAIL PAGE STYLING
 ***************************************/

@@ -1,8 +1,11 @@
-let volunteer_list = [
+let volunteer_list = [ 
   {
     id: 0,
     name: "Suicide Hotline",
-    image: "",
+    image: {
+      url: "https://www.arkansashouse.org/storage/15950/2022_Suicide-Crisis-Lifeline%20copy.jpg", 
+      description: "Picture of the 988 Hotline"
+    },
     location: {
       address: "123 Main Street",
       city: "Rocky Hill",
@@ -23,7 +26,10 @@ let volunteer_list = [
   {
     id: 1,
     name: "Own My Puppy",
-    image: "",
+    image:  {
+      url: "https://variety.com/wp-content/uploads/2014/01/puppy_bowl_lineup.jpg?w=1000",
+      description: "Pictures of pups"
+    },
     location: {
       address: "456 Main Street",
       city: "Reston",
@@ -44,6 +50,10 @@ let volunteer_list = [
   {
     id: 2,
     name: "NSF-NCDC",
+    image: {
+      url: "https://beforetheirtime.org/cdn/shop/articles/what-is-a-nonprofit-organization_1600x.jpg?v=1650520340",
+      description: "Generic Nonprofit Image"
+    },
     location: {
       address: "100 Abby Lane",
       city: "Syosset",
@@ -64,7 +74,10 @@ let volunteer_list = [
   {
     id: 3,
     name: "Forver Paws Animal Shelter",
-    image: "",
+    image: {
+      url: "https://www.raisely.com/blog/content/images/2023/01/Asset-1-1.png",
+      description: "Generic Nonprofit Image"
+    },
     location: {
       address: "123 Main Street",
       city: "Fall River",
@@ -85,7 +98,10 @@ let volunteer_list = [
   {
     id: 4,
     name: "Gift of Bread",
-    image: "",
+    image: {
+      url: "https://www.glenroybakery.com.au//wp-content/uploads/2023/01/Wholesale-Bread-Glenroy-Bakery.jpg", 
+      description: "Picture of different types of bread"
+    },
     location: {
       address: "79 George Street",
       city: "Sydney",
@@ -106,7 +122,11 @@ let volunteer_list = [
   {
     id: 5,
     name: "American  Red Cross",
-    image: "https://picsum.photos/100/",
+    image:  {
+      url: "https://www.redcross.org/content/dam/redcross/donations/holiday/2023-holiday-catalog/2023-holiday-donate-form-creative/Holiday-2023-WINM-Desktop_1348x505.png.transform/1024/q70/feature/image.png",
+      description: "red cross"
+    },
+
     location: {
       address: "123 South Street",
       city: "St. Louis",
@@ -127,7 +147,10 @@ let volunteer_list = [
   {
     id: 6,
     name: "Canine Sanctuary",
-    image: "https://picsum.photos/400/300",
+    image: {
+      url: "https://www.rescuedogs.co.uk/wp-content/uploads/2021/02/pebbles-thumbnail.jpg",
+      description: "Picture of a lovely dog"
+    },
     location: {
       address: "42-04 Crescent Ave",
       city: "Queens",
@@ -199,15 +222,33 @@ const renderVolunteerList = () => {
   searchResults.addEventListener("click", renderVolunteerDetails);
 }
 
+// TODO: (Tea!) Change image div to image with volunteer.image.url (src) and volunteer.image.description (alt)
+// TODO: (parker) Change h5 for location to include city and state instead of the entire location object
+// TODO: (Ricky) Add our main focuses to card by iterating over main array
+// TODO: (Jim) Change description div to a paragraph
+// TODO: (Angel) Add Skills You'll Gain by joining skills array with ", "
+const getSkills = (vol) => {
+  let skillDiv = `<div class="volunteerCard__skills">
+                    <span class="volunteerCard__skills__label">
+                      Skills You'll Gain: 
+                    </span>
+                    ${vol.skills.join(', ')}
+                  </div>`;
+  return skillDiv;
+};
+
 const renderCard = (vol) => {
   return `
-    <div data-id="${vol.id}" class="volunteerCard">
-      <div class="volunteerCard__image"></div>
+    <div data-id="${vol.id}" class="volunteerCard"> 
+      <img class="volunteerCard__image" src="${vol.image.url}" alt="${vol.image.description}" />
       <div class="volunteerCard__content">
-        <h2>${vol.id}</h2>
         <h4 class="volunteerCard__name">${vol.name}</h4>
-        <h5 class="volunteerCard__location">${vol.location}</h5>
-        <div class="volunteerCard__description">${vol.description}</div>
+        <h5 class="volunteerCard__location">${vol.location.city}, ${vol.location.state}</h5>
+        <ul class="volunteerCard__main-focus">
+          ${(vol.main.map(item => '<li class="volunteerCard__main-focus__item">' + item + '</li>')).join('')}
+        </ul>
+        <p class="volunteerCard__description">${vol.description}</p>
+        ${getSkills(vol)}
       </div> 
     </div>
   `;
