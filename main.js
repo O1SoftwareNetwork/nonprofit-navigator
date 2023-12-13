@@ -229,7 +229,7 @@ const renderVolunteerList = () => {
 // TODO: (Angel) Add Skills You'll Gain by joining skills array with ", "
 const getSkills = (vol) => {
   let skillDiv = `<div class="volunteerCard__skills">
-                    <span class="volunteerCard__skills__label">
+                    <span class="volunteerCard__skills--label">
                       Skills You'll Gain: 
                     </span>
                     ${vol.skills.join(', ')}

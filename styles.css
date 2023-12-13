@@ -25,6 +25,7 @@ CORE STYLING (*, HTML, BODY)
   --border-radius-m: 0.5rem;
 
   /* font size */
+  --font-size-xs: .6rem;
   --font-size-s: .8rem;
   --font-size-m: 1rem;
   --font-size-l: 1.4rem;
@@ -44,7 +45,7 @@ body {
 
 /***************************************
 NAVIGATION STYLING
-***************************************/
+************************ ***************/
 
 nav {
   background-color: var(--nav-color);
@@ -115,43 +116,63 @@ VOLUNTEER LIST PAGE STYLING
 }
 
 .volunteerCard {
-  border-radius: var(--border-radius-m);
   height: 400px;
   width: 80%; 
-  margin: 20px auto;
-  box-shadow: 2px -2px 8px var(--box-shadow-color); 
+  margin: 10px auto;
+  cursor: pointer;
 }
 
-.volunteerCard__image
- {
-  border-top-right-radius: var(--border-radius-m);
-  border-top-left-radius: var(--border-radius-m);
+.volunteerCard__image {
+  border-radius: 10px;
   overflow: hidden;
   background-color: white;
   height: 150px;
-  width: 100%; 
+  width: 100%;
 }
 
 .volunteerCard__content {
-  margin: 1rem;
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 
+.volunteerCard__name {
+  font-size: 24px;
+}
+
+.volunteerCard__location {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.volunteerCard__main-focus {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 700;
+  font-size: 12px;
+  list-style: none;
+  gap: 10px;
+}
+
+.volunteerCard__main-focus__item {
+  background: #61B2EA;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .volunteerCard__description {
-  background-color: var(--volunteer-card-color);
-  border-radius: var(--border-radius-m);
-  padding: 10px;
-  font-size: var(--font-size-s);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 0;
 }
 
 .volunteerCard__skills {
-
+  font-size: 12px;
 }
 
-.volunteerCard__skills__label {
-  font-weight: bold;
+.volunteerCard__skills--label {
+  font-weight: 600;
 }
 
 /***************************************
