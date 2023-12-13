@@ -20,7 +20,7 @@ let volunteer_list = [
       "This nonprofit trains members of the community to pick up calls and talk to people.",
     cause_areas: ["Advocacy", "Community"],
     skills: ["Communication", "People Skills", "Social Work"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["Driver's License", "Background Check", "Must be at least 18", "Training", "Very Flexible, any support is appreciated"]
   },
   {
@@ -44,7 +44,7 @@ let volunteer_list = [
        "This is non-profit org which works with Pet experts",
     cause_areas: ["Advocacy", "Community"],
     skills: ["Communication", "People Skills", "Social Work"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["Requirement 1", "Requirement 2"]
   },
   {
@@ -68,7 +68,7 @@ let volunteer_list = [
         "This is non-profit org which works with Climate",
     cause_areas: ["Advocacy", "Community"],
     skills: ["Communication", "People Skills", "Social Work"],
-    good_for:["group"],
+    good_for:["Group"],
     requirements:["Requirement 1", "Requirement 2"],
   },
   {
@@ -92,7 +92,7 @@ let volunteer_list = [
       "This nonprofit gives animals a second chance at finding a furever home.",
     cause_areas: ["Advocacy", "Community"],
     skills: ["Communication", "People Skills", "Social Work"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["Requirement 1", "Requirement 2"]
   },
   {
@@ -116,7 +116,7 @@ let volunteer_list = [
       "Gift of Bread is an Australian food rescue charitable organisation",
     cause_areas: ["Sustainability", "Feeding vulnerable people"],
     skills: ["Baking", "Food handling", "First aid"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["Availability for night shifts", "Driving Licence"]
   },
   {
@@ -141,7 +141,7 @@ let volunteer_list = [
       "Humanitarian organization that provides emergency assistance, disaster relief, and disaster preparedness",
     cause_areas: ["Aid", "Humanitarian"],
     skills: ["Leadership", "People Skills", "Social Work"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["good blood", "good heart"],
   },
   {
@@ -165,7 +165,7 @@ let volunteer_list = [
       "This nonprofit investigates dog fighting rings and organizes animal rescue operations. ",
     cause_areas: ["Animal Rights", "Illegal Operations", "Animal Rehabilitation Center", "Animal Sanctuary"],
     skills: ["Communication", "Pet Handling", "Social Work", "Military experience", "Law Enforcement Experience"],
-    good_for: "group",
+    good_for: "Group",
     requirements: ["Social work experience", "Animal care experience"]
   }
 ];
@@ -222,11 +222,6 @@ const renderVolunteerList = () => {
   searchResults.addEventListener("click", renderVolunteerDetails);
 }
 
-// TODO: (Tea!) Change image div to image with volunteer.image.url (src) and volunteer.image.description (alt)
-// TODO: (parker) Change h5 for location to include city and state instead of the entire location object
-// TODO: (Ricky) Add our main focuses to card by iterating over main array
-// TODO: (Jim) Change description div to a paragraph
-// TODO: (Angel) Add Skills You'll Gain by joining skills array with ", "
 const getSkills = (vol) => {
   let skillDiv = `<div class="volunteerCard__skills">
                     <span class="volunteerCard__skills--label">
@@ -272,9 +267,6 @@ function showSearchResults() {
  * * * * * * * * VOLUNTEER DETAILS PAGE * * * * * * * * 
  ******************************************************/
 
-
-// TODO: Render Volunteer Details Page
-// TODO: Complete this function
 const renderVolunteerDetails = (e) => {
   const volCard = e.target.closest('.volunteerCard');
   const id = +volCard.dataset.id;
@@ -283,42 +275,36 @@ const renderVolunteerDetails = (e) => {
   
   let main = document.getElementById("root");
   let markup = `
-    <div id="volunteer_search_details_page_1">
-      <h1>Header of Volunteer Opportunity</h1>
-      <h2>Organization Name: ${vol.name}</h2>
-      <p>This is a paragraph entered by the NPO abouta brief overview of the volunteer opportunity. This should be just enough information for the volunteeer to understand the jist of the opportunity</p>
-      <h3>Cause Areas</h3>
-      <p>Advocacy and Human Rights, Community, Immigrants and Refugees<p>
-      <h3>When</h3>
-      <p>We'll work with your schedule</p>
-      <P>Where<p/>
+    <div>
+      <img class="volunteer_list_image" src=${vol.image.url} alt=${vol.image.description}>
       <div>
-        <div>
-          <h3></h3>
-          <p></p>
+        <h1>${vol.name}</h1>
+        <p>${vol.description}</p>
+        <h2>Cause Areas</h2>
+        <p>${vol.cause_areas.join(', ')}</p> 
+        <h2>When</h2>
+        <p>${vol.date_hosted}</p>
+        <div class="volunteer-details__location">
+          <div>
+            <h2>Where</h2>
+            <p>${vol.location.address}</p>
+            <p>${vol.location.city}, ${vol.location.state}, ${vol.location.zip}</p>
+          </div>
+          <div style="width:75px;height:75px;background-color:lightgray">MAP</div> 
         </div>
-        <div>image</div>
+        <h2>Skills</h2> 
+        <ul>
+          ${vol.skills.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+        <h2>Good For</h2>
+        <p>${vol.good_for}<p>
+        <h2>Requirements</h2>
+        <ul>
+          ${vol.requirements.map((requirement) => {
+            return `<li>${requirement}</li>`;
+          }).join('')}
+        </ul>
       </div>
-      <h3>Skills</h3>
-      <ul>
-        <li>Mentoring</li>
-        <li>Life Coaching</li>
-        <li>Veteran Care</li>
-        <li>Arabic</li>
-        <li>People Skills</li>
-        <li>Social Work</li>
-      </ul>
-      <h3>Good For</h3>
-      <p><p>
-      <h3>Requirements</h3>
-      <ul>
-        <li>Driver's License</li>
-        <li>Background Check</li>
-        <li>Must be at least 18</li>
-        <li>Orientation or Training</li>
-        <li>Very flexible, any support is appreciated</li>
-        <li>A successful volunteer must be bilingual.</li>
-      </ul>
     </div>
   `;
 

@@ -101,6 +101,10 @@ VOLUNTEER LIST PAGE STYLING
   flex-direction: column;
 }
 
+.volunteer_list_image {
+  width: 100%;
+}
+
 .header {
   font-size: 2rem;
   text-align: center;
@@ -156,7 +160,7 @@ VOLUNTEER LIST PAGE STYLING
 }
 
 .volunteerCard__main-focus__item {
-  background: #61B2EA;
+  background: #e9e9e9;
   border-radius: 5px;
   padding: 5px;
 }
@@ -179,7 +183,10 @@ VOLUNTEER LIST PAGE STYLING
 VOLUNTEER DETAIL PAGE STYLING
 ***************************************/
 
-
+.volunteer-details__location {
+  display: flex;
+  justify-content: space-between;
+}
 
 /***************************************
 FOOTER STYLING
