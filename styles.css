@@ -162,6 +162,14 @@ VOLUNTEER LIST PAGE STYLING
   cursor: pointer;
 }
 
+.volunteerCard img {
+  transition: opacity 300ms ease-in-out;
+}
+
+.volunteerCard:hover img {
+  opacity: 0.5;
+}
+
 .volunteerCard__image {
   border-radius: 10px;
   overflow: hidden;
