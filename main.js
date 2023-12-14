@@ -238,7 +238,7 @@ const getSkills = (vol) => {
 const renderCard = (vol) => {
   return `
     <div data-id="${vol.id}" class="volunteerCard"> 
-      <img class="volunteerCard__image" src="${vol.image.url}" alt="${vol.image.description}" />
+      <img class="volunteerCard__image" id="volunteerCard__image" src="${vol.image.url}" alt="${vol.image.description}" />
       <div class="volunteerCard__content">
         <h4 class="volunteerCard__name">${vol.name}</h4>
         <h5 class="volunteerCard__location">${vol.location.city}, ${vol.location.state}</h5>
