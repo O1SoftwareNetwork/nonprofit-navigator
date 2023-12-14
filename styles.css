@@ -3,6 +3,7 @@ CORE STYLING (*, HTML, BODY)
 ***************************************/
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -78,19 +79,54 @@ main {
 HOME PAGE STYLING
 ***************************************/
 
-#page__home {
-  margin: 20px auto;
-  width: 250px;
-  height: 250px;
-  background-color: var(--volunteer-search-color);
+.volunteerHome {
+  background-image: linear-gradient(to bottom, green, var(--main-color));
+  padding: 2rem;
   cursor: pointer;
 }
 
-.card__title {
-  text-align: center;
-  font-size: var(--font-size-l);
-  cursor: pointer;
+.volunteerHome__image {
+  margin: 1rem auto 2rem;
+  width: 240px;
+  height: 240px;
+  background-color: rgb(240, 240, 240);
 }
+
+.volunteerHome__header {
+  margin: 1rem  0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.volunteerHome__description {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 2rem;
+}
+
+.volunteerHome__button {
+  height: 40px;
+  width: 180px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #025928;
+  border-radius: 2rem;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+/* // ALL
+margin: 20px;
+
+// TOP/BOTTOM AND RIGHT/LEFT
+margin: 10px 20px;
+
+// top sides bottom
+// margin: 10px 20px 5px;
+
+// TTOP AND BOTTOM AND LEFT AND RIGHT
+margin: 5px 10px 25px 13px */
 
 /***************************************
 VOLUNTEER LIST PAGE STYLING

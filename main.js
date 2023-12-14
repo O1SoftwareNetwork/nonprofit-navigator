@@ -177,14 +177,17 @@ let volunteer_list = [
 const renderHome = () => {
   let main = document.getElementById("root");
   let markup = `
-    <div class="page__home" id="page__home">
-      <h2 class="card__title">Volunteer</h2>
+    <div class="volunteerHome" id="volunteerHome">
+      <div class="volunteerHome__image">Image</div>
+      <h2 class="volunteerHome__header">Find Volunteer Opportunities</h2>
+      <p class="volunteerHome__description">We make it easy for people who want to get involved. Signing up is just a click away.</p>
+      <button class="volunteerHome__button" id="volunteerHome__button">Explore</button>
     </div>
   `;
   // Insert our home page into our main container
   main.innerHTML = markup;
   
-  const volunteerButton = document.getElementById("page__home");
+  const volunteerButton = document.getElementById("volunteerHome__button");
   volunteerButton.addEventListener("click", renderVolunteerList);
 }
 
@@ -275,7 +278,7 @@ const renderVolunteerDetails = (e) => {
   
   let main = document.getElementById("root");
   let markup = `
-    <div>
+    <div> 
       <img class="volunteer_list_image" src=${vol.image.url} alt=${vol.image.description}>
       <div>
         <h1>${vol.name}</h1>
