@@ -1,5 +1,6 @@
 import { volunteer_list } from "./data.js";
 import { renderHomeMarkup } from "./views/homeView.js";
+
 /******************************************************
  * * * * * * * * * * * * * HOME * * * * * * * * * * * *
  ******************************************************/
@@ -14,10 +15,10 @@ const renderHome = () => {
   // Add event listeners
   const volunteerButton = document.getElementById("volunteerHome__button");
   volunteerButton.addEventListener("click", renderVolunteerList);
-}
+};
 
 /******************************************************
- * * * * * * * * * VOLUNTEER LIST PAGE * * * * * * * * 
+ * * * * * * * * * VOLUNTEER LIST PAGE * * * * * * * *
  ******************************************************/
 
 const renderVolunteerList = () => {
@@ -33,39 +34,50 @@ const renderVolunteerList = () => {
       </div>
       <br>
       <div id="search-results">
-        ${volunteer_list.map((volunteer) => {
-          return renderCard(volunteer)
-        }).join('')}
+        ${volunteer_list
+          .map((volunteer) => {
+            return renderCard(volunteer);
+          })
+          .join("")}
       </div>
     </div>
   `;
-  
+
   main.innerHTML = markup;
-  
+
   const searchButton = document.getElementById("search-button");
   searchButton.addEventListener("click", showSearchResults);
 
   // Grabbing a reference of the DIV containing all the cards
   const searchResults = document.getElementById("search-results");
   searchResults.addEventListener("click", renderVolunteerDetails);
-}
+};
 
 const renderCard = (vol) => {
   return `
     <div data-id="${vol.id}" class="volunteerCard"> 
-      <img class="volunteerCard__image" src="${vol.image.url}" alt="${vol.image.description}" />
+      <img class="volunteerCard__image" id="volunteerCard__image" src="${
+        vol.image.url
+      }" alt="${vol.image.description}" />
       <div class="volunteerCard__content">
         <h4 class="volunteerCard__name">${vol.name}</h4>
-        <h5 class="volunteerCard__location">${vol.location.city}, ${vol.location.state}</h5>
+        <h5 class="volunteerCard__location">${vol.location.city}, ${
+    vol.location.state
+  }</h5>
         <ul class="volunteerCard__main-focus">
-          ${(vol.main.map(item => '<li class="volunteerCard__main-focus__item">' + item + '</li>')).join('')}
+          ${vol.main
+            .map(
+              (item) =>
+                '<li class="volunteerCard__main-focus__item">' + item + "</li>"
+            )
+            .join("")}
         </ul>
         <p class="volunteerCard__description">${vol.description}</p>
         ${getSkills(vol)}
       </div> 
     </div>
   `;
-}
+};
 
 const getSkills = (vol) => {
   let skillDiv = `<div class="volunteerCard__skills">
@@ -92,61 +104,70 @@ function showSearchResults() {
 }
 
 /******************************************************
- * * * * * * * * VOLUNTEER DETAILS PAGE * * * * * * * * 
+ * * * * * * * * VOLUNTEER DETAILS PAGE * * * * * * * *
  ******************************************************/
 
 const renderVolunteerDetails = (e) => {
-  const volCard = e.target.closest('.volunteerCard');
+  const volCard = e.target.closest(".volunteerCard");
   const id = +volCard.dataset.id;
 
   const vol = volunteer_list.find((v) => v.id === id);
-  
+
   let main = document.getElementById("root");
   let markup = `
     <div> 
-      <img class="volunteer_list_image" src=${vol.image.url} alt=${vol.image.description}>
+      <img class="volunteer_list_image" src=${vol.image.url} alt=${
+    vol.image.description
+  }>
       <div>
         <h1>${vol.name}</h1>
-        <p>${vol.description}</p>
-        <h2>Cause Areas</h2>
-        <p>${vol.cause_areas.join(', ')}</p> 
+        <p class="volunteerDetail_description">${vol.description}</p>
+        <button class= "volunteerDetail_readMore">Read More</button>
+        <h2>Cause Areas</h2>  
+        <p>${vol.cause_areas.join(", ")}</p> 
         <h2>When</h2>
         <p>${vol.date_hosted}</p>
         <div class="volunteer-details__location">
           <div>
             <h2>Where</h2>
             <p>${vol.location.address}</p>
-            <p>${vol.location.city}, ${vol.location.state}, ${vol.location.zip}</p>
+            <p>${vol.location.city}, ${vol.location.state}, ${
+    vol.location.zip
+  }</p>
           </div>
           <div style="width:75px;height:75px;background-color:lightgray">MAP</div> 
         </div>
         <h2>Skills</h2> 
         <ul>
-          ${vol.skills.map(skill => `<li>${skill}</li>`).join('')}
+          ${vol.skills.map((skill) => `<li>${skill}</li>`).join("")}
         </ul>
         <h2>Good For</h2>
         <p>${vol.good_for}<p>
         <h2>Requirements</h2>
         <ul>
-          ${vol.requirements.map((requirement) => {
-            return `<li>${requirement}</li>`;
-          }).join('')}
+          ${vol.requirements
+            .map((requirement) => {
+              return `<li>${requirement}</li>`;
+            })
+            .join("")}
         </ul>
       </div>
     </div>
   `;
 
   main.innerHTML = markup;
-}
+};
 
 /******************************************************
- * * * * * * * * * * * * CORE * * * * * * * * * * * * * 
+ * * * * * * * * * * * * CORE * * * * * * * * * * * * *
  ******************************************************/
 
 window.addEventListener("load", renderHome);
 
 // Volunteer nav button functionality
-document.getElementById('nav__volunteer').addEventListener("click", renderVolunteerList);
+document
+  .getElementById("nav__volunteer")
+  .addEventListener("click", renderVolunteerList);
 
 // Home nav button functionality
 const homeButton = document.getElementById("nav__home");
