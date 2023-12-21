@@ -1,7 +1,7 @@
 import { volunteer_list } from "./data.js";
 import { renderHomeMarkup } from "./views/homeView.js";
 import { renderListMarkup } from "./views/listView.js";
-
+import { renderDetailsMarkup } from "./views/detailsView.js";
 
 /******************************************************
  * * * * * * * * * * * * * HOME * * * * * * * * * * * *
@@ -39,8 +39,6 @@ const renderVolunteerList = () => {
   searchResults.addEventListener("click", renderVolunteerDetails);
 };
 
-
-
 //function to render the search results
 function showSearchResults() {
   let searchResultsDiv = document.getElementById("search-results");
@@ -60,52 +58,14 @@ function showSearchResults() {
  ******************************************************/
 
 const renderVolunteerDetails = (e) => {
-  const volCard = e.target.closest(".volunteerCard");
+  const volCard = e.target.closest(".volunteerCard"); // controller
   const id = +volCard.dataset.id;
 
   const vol = volunteer_list.find((v) => v.id === id);
 
   let main = document.getElementById("root");
-  let markup = `
-    <div> 
-      <img class="volunteer_list_image" src=${vol.image.url} alt=${
-    vol.image.description
-  }>
-      <div>
-        <h1>${vol.name}</h1>
-        <p class="volunteerDetail_description">${vol.description}</p>
-        <button class= "volunteerDetail_readMore">Read More</button>
-        <h2>Cause Areas</h2>  
-        <p>${vol.cause_areas.join(", ")}</p> 
-        <h2>When</h2>
-        <p>${vol.date_hosted}</p>
-        <div class="volunteer-details__location">
-          <div>
-            <h2>Where</h2>
-            <p>${vol.location.address}</p>
-            <p>${vol.location.city}, ${vol.location.state}, ${
-    vol.location.zip
-  }</p>
-          </div>
-          <div style="width:75px;height:75px;background-color:lightgray">MAP</div> 
-        </div>
-        <h2>Skills</h2> 
-        <ul>
-          ${vol.skills.map((skill) => `<li>${skill}</li>`).join("")}
-        </ul>
-        <h2>Good For</h2>
-        <p>${vol.good_for}<p>
-        <h2>Requirements</h2>
-        <ul>
-          ${vol.requirements
-            .map((requirement) => {
-              return `<li>${requirement}</li>`;
-            })
-            .join("")}
-        </ul>
-      </div>
-    </div>
-  `;
+
+  let markup = renderDetailsMarkup(vol);
 
   main.innerHTML = markup;
 };
