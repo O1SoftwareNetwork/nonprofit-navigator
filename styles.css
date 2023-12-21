@@ -9,25 +9,24 @@ CORE STYLING (*, HTML, BODY)
 }
 
 :root {
-
   /* utilities */
 
   /* color variables */
   --box-shadow-color: gray;
   --bg-color: lightgray;
-  --nav-color: #DAD3FF;
+  --nav-color: #dad3ff;
   --nav-color-hover: #e9e5ff;
   --main-color: white;
   --volunteer-search-color: gray;
   --volunteer-card-color: white;
-  --footer-color: #DAD3FF;
+  --footer-color: #dad3ff;
 
   /* border radii */
   --border-radius-m: 0.5rem;
 
   /* font size */
-  --font-size-xs: .6rem;
-  --font-size-s: .8rem;
+  --font-size-xs: 0.6rem;
+  --font-size-s: 0.8rem;
   --font-size-m: 1rem;
   --font-size-l: 1.4rem;
 }
@@ -69,8 +68,8 @@ nav {
 MAIN SECTION STYLING
 ***************************************/
 
-main { 
-  width: 100%; 
+main {
+  width: 100%;
   background-color: var(--main-color);
   flex-grow: 1;
 }
@@ -93,15 +92,15 @@ HOME PAGE STYLING
 }
 
 .volunteerHome__header {
-  margin: 1rem  0;
+  margin: 1rem 0;
   font-size: 2rem;
   font-weight: 700;
 }
 
 .volunteerHome__description {
-font-size: 1rem;
-font-weight: 600;
-margin-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .volunteerHome__button {
@@ -147,7 +146,7 @@ VOLUNTEER LIST PAGE STYLING
   margin: 20px 0;
 }
 
-.search_input{
+.search_input {
   flex-direction: row;
 }
 
@@ -157,7 +156,7 @@ VOLUNTEER LIST PAGE STYLING
 
 .volunteerCard {
   height: 400px;
-  width: 80%; 
+  width: 80%;
   margin: 10px auto;
   cursor: pointer;
 }
@@ -182,7 +181,7 @@ VOLUNTEER LIST PAGE STYLING
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .volunteerCard__name {
@@ -243,4 +242,19 @@ footer {
   height: 50px;
   width: 100%;
   background-color: var(--footer-color);
+}
+
+.volunteerDetail_description {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  color: black;
+}
+.volunteerDetail_readMore {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19.36px;
+  color: #ff6a97;
+  background: transparent;
+  border: 0;
 }
