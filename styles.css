@@ -21,38 +21,14 @@ body {
   width: 250px;
   height: 250px;
   background-color: gray;
-
-}
-
-#volunter_search_page{
-  display: flex;
-}
-
-/* #search{
- flex-direction: column;
-} */
-
-#search_input{
-  flex-direction: row;
+  display: grid;
+  place-content: center;
 }
 
 h2 {
   text-align: center;
   font-size: 2.5rem;
 }
-
-h2 input {
-  display: flex;
-}
-
-main {
-  flex-grow: 1;
-}
-
-/*
-
-*/
-
 footer {
   display: flex;
   justify-content: center;
@@ -64,4 +40,27 @@ footer {
 
 .text_input {
   width: 150px;
+}
+
+nav{
+  display: flex;
+  margin-top: 1em;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+button{
+  border: none;
+  text-align: center;
+  padding: .5em 1em;
+  border-radius: 5px;
+  background-color: rgb(95, 182, 211);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: lightblue;
 }
